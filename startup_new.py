@@ -17,8 +17,8 @@ from glob import glob
 
 
 app = Flask(__name__)
-with open('/home/nikhilmanvesh/GlobalLinkLLC_app_credentials.json', mode='r') as f:
-    global_link_creds = json.load(f)
+# with open('/home/nikhilmanvesh/GlobalLinkLLC_app_credentials.json', mode='r') as f:
+#     global_link_creds = json.load(f)
 
 cors = CORS(app, resources={r'/*': {'origins': '*'}})
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -117,7 +117,6 @@ def upload_data_to_AmazonS3():
         return {'error': str(ex)}
     else:
         return {'message': 'sucess'}
-
 
 @app.route('/scrape_wix_data/', methods=['GET'])
 @cross_origin
