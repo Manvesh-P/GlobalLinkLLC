@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 cors = CORS(app, resources={r'/*': {'origins': '*'}})
 app.config['CORS_HEADERS'] = 'Content-Type'
-session = SessionGenerator().get_session()
+# session = SessionGenerator().get_session()
 
 # with open(glob('/home/ni**ma**/aw**_k**.json')[0]) as f:
 #     aws_creds = json.load(f)
@@ -296,7 +296,7 @@ def scrape_wix_data():
 
 @app.route('/render_products/<category>', methods=['GET'])
 def render_products(category):
-    print('category ---> ', category)
+    # print('category ---> ', category)
     images_list = os.listdir('static/Products/%s' % category.capitalize())
     # with open(glob('/home/ni**ma**/aw**_k**.json')[0]) as f:
     #     aws_creds = json.load(f)
@@ -315,7 +315,7 @@ def render_products(category):
     # print('res ---> ', res)
     # pprint(res['Contents'][0]['Key'])
     category_contents = [_content['Key'] for _content in res['Contents']]
-    print('category_contents ---> ', category_contents)
+    # print('category_contents ---> ', category_contents)
     urls_list = []
     for category_content in category_contents:
         # object_data = s3_client.get_object(Bucket='global-link-llc-bucket', 
@@ -331,7 +331,7 @@ def render_products(category):
             ExpiresIn=3600
         )
         urls_list.append(_url)
-    print('urls_list ---> ', urls_list)
+    # print('urls_list ---> ', urls_list)
 
     html_template = \
     """
